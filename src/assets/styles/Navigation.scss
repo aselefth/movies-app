@@ -1,0 +1,13 @@
+.navigation {
+  @apply flex px-4 py-2 justify-around items-center bg-gradient-to-r from-blue-700 to-purple-700 fixed top-0 left-0 right-0;
+  a:first-child {
+    font-family: 'Bungee Spice';
+    letter-spacing: 4px;
+  }
+  a {
+    color: white;
+    font-size: 1.2rem;
+    text-transform: uppercase;
+
+  }
+}
