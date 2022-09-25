@@ -9,7 +9,7 @@ export const SearchMovies: React.FC = () => {
     let response = data !== undefined && data.Response === 'True';
     return (
         <div>
-            {isLoading === undefined &&
+            {isLoading &&
                 <h1>
                     Loading...
                 </h1>}
@@ -17,7 +17,7 @@ export const SearchMovies: React.FC = () => {
             <div
                 className={'w-full h-full flex gap-14 flex-wrap mx-auto mt-4 px-5 justify-center'}
             >
-                {response ? data?.Search.map((movie: ShortMovieProps) => (
+                {response && data?.Search.map((movie: ShortMovieProps) => (
                     <ShortMovie
                         movieName={`${movieName}`}
                         imdbID={movie.imdbID}
@@ -26,14 +26,15 @@ export const SearchMovies: React.FC = () => {
                         key={movie.imdbID}
                     />
                 ))
-                : (
+                }
+                {!isLoading && !response && (
                     <div className={'flex flex-col items-center gap-4'}>
                         <h1>No such a movie...</h1>
                         <button className={'px-4 py-3 bg-amber-400 rounded'}>
                             <Link to={'/'}>Go back</Link>
                         </button>
                     </div>
-                    )}
+                )}
 
             </div>
         </div>
