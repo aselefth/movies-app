@@ -37,4 +37,5 @@ export interface IShortMovie {
     "imdbID": string;
     "Type"?: string;
     "Poster": string;
+    "id"?: string;
 }

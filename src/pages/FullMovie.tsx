@@ -4,7 +4,7 @@ import {useGetMovieByIdQuery} from "../store/fake.api";
 import '../assets/styles/FullMovie.scss'
 
 export const FullMovie: React.FC = () => {
-    const {movieName, id} = useParams();
+    const {id} = useParams();
 
     const {data: movie, isLoading} = useGetMovieByIdQuery(`${id?.slice(1, id?.length)}`);
     return (
@@ -54,8 +54,6 @@ export const FullMovie: React.FC = () => {
                 >
                     <p>{movie.Plot}</p>
                 </div>}
-
-
         </div>
     )
 }

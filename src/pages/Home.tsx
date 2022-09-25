@@ -1,14 +1,10 @@
-import React, {useEffect, useState} from "react";
-import {ShortMovie, ShortMovieProps} from "../components/ShortMovie";
+import React from "react";
 import {useInput} from "../hooks/useInput";
-import {useGetMoviesBySearchQuery} from "../store/fake.api";
-import {IShortMovie} from "../types/MovieTypes";
-import {useChangeRequestValueMutation, useGetRequestValueQuery} from "../store/request.api";
-import {Link, useNavigate, useParams} from "react-router-dom";
+import {useNavigate} from "react-router-dom";
 
 const Home: React.FC = () => {
 
-    const {value, handleValueChange: onSearchChange, setValue} = useInput();
+    const {value, handleValueChange: onSearchChange} = useInput();
     const navigate = useNavigate();
 
     return (

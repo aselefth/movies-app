@@ -1,5 +1,5 @@
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
-import {IMovie, IShortMovie} from "../types/MovieTypes";
+import {IMovie} from "../types/MovieTypes";
 
  
 
