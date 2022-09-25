@@ -4,10 +4,9 @@ import {Link} from "react-router-dom";
 import {useChangeRequestValueMutation, useDeleteFavMovieMutation, useGetRequestValueQuery} from '../store/request.api';
 export interface ShortMovieProps extends IShortMovie{
     movieName: string;
-    favsId?: string;
 }
 
-export const ShortMovie: React.FC<ShortMovieProps> = ({Title, Poster, imdbID, movieName, favsId}) => {
+export const ShortMovie: React.FC<ShortMovieProps> = ({Title, Poster, imdbID, movieName}) => {
     const [addToFavs] = useChangeRequestValueMutation();
     const [removeFromFavs] = useDeleteFavMovieMutation();
     const {data} = useGetRequestValueQuery(undefined);

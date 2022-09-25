@@ -13,7 +13,7 @@ export const moviesApi = createApi({
             providesTags: [{type: 'Products', id: 'LIST'}]
         }),
         getMoviesBySearch: builder.query<any, string>({
-            query: (name: string = 'avengers') => ({url: `?apikey=abf49470&s=${name}&type=movie`}),
+            query: (search) => ({url: `?apikey=abf49470&${search}`}),
             providesTags: ['Products']
         })
     })
