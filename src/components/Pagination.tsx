@@ -9,7 +9,7 @@ interface PaginationProps {
 export const Pagination:React.FC<PaginationProps> = ({page, handlePreviousPage, handleNextPage}) => {
     return (
         <div
-            className={'flex gap-4 mt-4 mb-2'}
+            className={'flex gap-4 mt-4 pb-4'}
         >
             <button
                 onClick={handlePreviousPage}

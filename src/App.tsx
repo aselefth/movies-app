@@ -11,7 +11,7 @@ const App: React.FC = () => {
 
 
   return (
-    <>
+    <div>
       <Navigation />
       <Routes>
         <Route path={'/'} element={<Home />} />
@@ -19,7 +19,7 @@ const App: React.FC = () => {
           <Route path={'/:movieName/:id'} element={<FullMovie/>} />
           <Route path={'/:movieName'} element={<SearchMovies/>}/>
       </Routes>
-    </>
+    </div>
   );
 };
 
