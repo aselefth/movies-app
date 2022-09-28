@@ -2,6 +2,9 @@ import React, {useEffect, useState} from "react";
 import {IShortMovie} from "../types/MovieTypes";
 import {Link} from "react-router-dom";
 import {useChangeRequestValueMutation, useDeleteFavMovieMutation, useGetRequestValueQuery} from '../store/request.api';
+import whiteHeart from '../assets/icons/whiteHeart.svg';
+import redHeart from '../assets/icons/heart.svg'
+
 export interface ShortMovieProps extends IShortMovie{
     movieName: string;
 }
@@ -51,9 +54,8 @@ export const ShortMovie: React.FC<ShortMovieProps> = ({Title, Poster, imdbID, mo
                     onClick={toggleFavMovie}
                     className={'px-4 py-2 text-center bg-yellow-700 text-white text-xl rounded h-[45px]'}
                 >
-                    <div
-                        className={`w-[25px] h-[25px] rounded-xl border ${isFav ? 'bg-red-400' : 'bg-transparent'}`}
-                    >
+                    <div>
+                        <img src={isFav ? redHeart : whiteHeart} alt={'favourites'} className={'w-[25px]'}/>
                     </div>
                 </button>
                 <Link to={`/${movieName}/:${imdbID}`}

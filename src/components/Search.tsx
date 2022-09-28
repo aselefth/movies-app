@@ -10,7 +10,6 @@ export const Search: React.FC = () => {
     const dispatch = useAppDispatch();
     const searches = useAppSelector(state => state.search.previousRequests);
     const navigate = useNavigate();
-    console.log(value)
     useEffect(() => {
         setValue('')
     }, []);
@@ -25,6 +24,7 @@ export const Search: React.FC = () => {
                     e.preventDefault();
                     dispatch(addRecentSearch(value));
                     navigate(`/:${value}`);
+                    setValue('')
                 }}
             >
                 <input
@@ -51,9 +51,9 @@ export const Search: React.FC = () => {
                                 <p
                                     onClick={() => {
                                         navigate(`/:${searchedMovie}`);
-                                        setValue('');
+                                        setValue('')
                                     }}
-                                    className={'px-2 py-1 hover:bg-gray-100 w-full h-full border'}
+                                    className={'px-2 py-1 hover:bg-gray-100 w-full h-full border cursor-pointer'}
                                     key={searchedMovie}
                                 >
                                     {searchedMovie}
