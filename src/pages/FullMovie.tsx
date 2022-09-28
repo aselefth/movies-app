@@ -11,11 +11,12 @@ export const FullMovie: React.FC = () => {
     const {id} = useParams();
     const {data: movie, isLoading} = useGetMovieByIdQuery(`${id?.slice(1, id?.length)}`);
     const [addToFavs] = useChangeRequestValueMutation();
+    const [isDisabled, setIsDisabled] = useState(false);
     const [removeFromFavs] = useDeleteFavMovieMutation();
     const {data} = useGetRequestValueQuery(undefined);
     const [isFav, setIsFav] = useState(false);
+    const searchedMovie = data && data.find((item: IShortMovie) => item.imdbID === `${id?.slice(1, id?.length)}`);
     const toggleFavMovie = async() => {
-        const searchedMovie = data && data.find((item: IShortMovie) => item.imdbID === `${id?.slice(1, id?.length)}`);
         if (searchedMovie === undefined) {
             movie && await addToFavs({Title: movie.Title, Poster: movie.Poster, imdbID: `${id}`, id: ''});
             setIsFav(true);
@@ -26,9 +27,14 @@ export const FullMovie: React.FC = () => {
     }
 
     useEffect(() => {
-        movie === undefined ? setIsFav(false) : setIsFav(true);
-
+        searchedMovie === undefined ? setIsFav(false) : setIsFav(true);
     }, [movie]);
+
+    useEffect(() => {
+        setIsDisabled(false);
+    }, [data]);
+
+
     return (
         <div
             className={'wrapper'}
@@ -84,7 +90,11 @@ export const FullMovie: React.FC = () => {
                         {`${movie.BoxOffice}`}
                     </h3>
                     <button
-                        onClick={toggleFavMovie}
+                        onClick={() => {
+                            toggleFavMovie();
+                            setIsDisabled(true);
+                        }}
+                        disabled={isDisabled}
                         className={'px-4 py-2 text-center bg-yellow-700 text-white text-xl rounded h-[45px] w-[70px] flex justify-center items-center'}
                     >
                         <div>
