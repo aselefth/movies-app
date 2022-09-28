@@ -11,6 +11,7 @@ export interface ShortMovieProps extends IShortMovie{
 
 export const ShortMovie: React.FC<ShortMovieProps> = ({Title, Poster, imdbID, movieName}) => {
     const [addToFavs] = useChangeRequestValueMutation();
+    const [isDisabled, setIsDisabled] = useState(false);
     const [removeFromFavs] = useDeleteFavMovieMutation();
     const {data} = useGetRequestValueQuery(undefined);
     const [isFav, setIsFav] = useState(false);
@@ -29,6 +30,9 @@ export const ShortMovie: React.FC<ShortMovieProps> = ({Title, Poster, imdbID, mo
         movie === undefined ? setIsFav(false) : setIsFav(true);
 
     }, [movie]);
+    useEffect(() => {
+        setIsDisabled(false);
+    }, [data]);
 
 
 
@@ -51,7 +55,11 @@ export const ShortMovie: React.FC<ShortMovieProps> = ({Title, Poster, imdbID, mo
             </div>
             <div className={'flex items-center gap-4'}>
                 <button
-                    onClick={toggleFavMovie}
+                    onClick={() => {
+                        toggleFavMovie();
+                        setIsDisabled(true);
+                    }}
+                    disabled={isDisabled}
                     className={'px-4 py-2 text-center bg-yellow-700 text-white text-xl rounded h-[45px]'}
                 >
                     <div>

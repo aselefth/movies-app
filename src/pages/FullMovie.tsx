@@ -56,17 +56,32 @@ export const FullMovie: React.FC = () => {
                         {movie.Actors}
                     </h3>
                     <h3>
-                        imdb Rating: {movie.imdbRating}
+                        <span
+                            className={'font-bold'}
+                        >
+                            imdb Rating:
+                        </span>
+                         {` ${movie.imdbRating}`}
                     </h3>
                     {movie.Ratings.map(rating => (
                         <h3
                             key={rating.Source}
                         >
-                            {`${rating.Source}: ${rating.Value}`}
+                            <span
+                                className={'font-bold'}
+                            >
+                                {`${rating.Source}`}:
+                            </span>
+                            {` ${rating.Value}`}
                         </h3>)
                     )}
                     <h3>
-                        box office: {movie.BoxOffice}
+                        <span
+                            className={'font-bold'}
+                        >
+                            box office:
+                        </span>
+                        {`${movie.BoxOffice}`}
                     </h3>
                     <button
                         onClick={toggleFavMovie}

@@ -17,6 +17,7 @@
     }
   }
   @media screen and (max-width: 500px) {
+    margin-bottom: 20px;
     .top-info {
       @apply flex flex-col items-center;
       .top-info__right {

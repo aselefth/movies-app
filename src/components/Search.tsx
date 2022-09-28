@@ -24,7 +24,7 @@ export const Search: React.FC = () => {
                     e.preventDefault();
                     dispatch(addRecentSearch(value));
                     navigate(`/:${value}`);
-                    setValue('')
+                    // setValue('')
                 }}
             >
                 <input
@@ -51,7 +51,7 @@ export const Search: React.FC = () => {
                                 <p
                                     onClick={() => {
                                         navigate(`/:${searchedMovie}`);
-                                        setValue('')
+                                        // setValue('')
                                     }}
                                     className={'px-2 py-1 hover:bg-gray-100 w-full h-full border cursor-pointer'}
                                     key={searchedMovie}
