@@ -1,4 +1,4 @@
-import React, {useState} from "react";
+import React, {useEffect, useState} from "react";
 import {useInput} from "../hooks/useInput";
 import {useNavigate} from "react-router-dom";
 import {useAppDispatch, useAppSelector} from "../hooks/redux";
@@ -10,6 +10,11 @@ export const Search: React.FC = () => {
     const dispatch = useAppDispatch();
     const searches = useAppSelector(state => state.search.previousRequests);
     const navigate = useNavigate();
+    console.log(value)
+    useEffect(() => {
+        setValue('')
+    }, []);
+
 
     return (
         <div
