@@ -3,6 +3,7 @@ import {ShortMovie, ShortMovieProps} from "../components/ShortMovie";
 import {useGetMoviesBySearchQuery} from "../store/fake.api";
 import {Link, useParams} from "react-router-dom";
 import {Pagination} from "../components/Pagination";
+import {Search} from "../components/Search";
 
 export const SearchMovies: React.FC = () => {
     const [page, setPage] = useState(1);
@@ -23,12 +24,13 @@ export const SearchMovies: React.FC = () => {
     }
     return (
         <div
-            className={'flex flex-col items-center mt-4 mb-12 justify-between'}
+            className={'flex flex-col items-center mb-12 justify-between gap-8'}
         >
             {isLoading &&
                 <h1>
                     Loading...
                 </h1>}
+            <Search />
 
             <div
                 ref={ref}
