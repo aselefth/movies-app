@@ -4,7 +4,11 @@ import {Search} from "../components/Search";
 const Home: React.FC = () => {
 
     return (
-       <Search />
+        <div
+            className={'w-full h-full relative'}
+        >
+            <Search />
+        </div>
     )
 }
 

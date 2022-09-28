@@ -24,7 +24,7 @@ export const SearchMovies: React.FC = () => {
     }
     return (
         <div
-            className={'flex flex-col items-center mb-12 justify-between gap-8'}
+            className={'flex flex-col items-center mb-12 justify-between gap-8 relative '}
         >
             {isLoading &&
                 <h1>
