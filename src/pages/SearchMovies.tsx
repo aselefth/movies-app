@@ -1,4 +1,4 @@
-import React, {useRef, useState} from "react";
+import React, {useEffect, useRef, useState} from "react";
 import {ShortMovie, ShortMovieProps} from "../components/ShortMovie";
 import {useGetMoviesBySearchQuery} from "../store/fake.api";
 import {Link, useParams} from "react-router-dom";
@@ -22,6 +22,10 @@ export const SearchMovies: React.FC = () => {
         setPage(prev => prev + 1);
         ref.current && ref.current.scrollIntoView({behavior: 'smooth', block: 'start'});
     }
+
+    useEffect(() => {
+        setPage(1);
+    }, [movieName]);
     return (
         <div
             className={'flex flex-col items-center mb-12 justify-between gap-8 relative '}
