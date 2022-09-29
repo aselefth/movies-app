@@ -1,7 +1,8 @@
 import React, {useEffect, useState} from "react";
 import {useParams} from "react-router-dom";
 import {useGetMovieByIdQuery} from "../store/fake.api";
-import '../assets/styles/FullMovie.scss'
+import '../assets/styles/FullMovie.scss';
+import '../assets/styles/ShortMovie.scss';
 import {useChangeRequestValueMutation, useDeleteFavMovieMutation, useGetRequestValueQuery} from "../store/request.api";
 import {IShortMovie} from "../types/MovieTypes";
 import redHeart from "../assets/icons/heart.svg";
@@ -45,6 +46,16 @@ export const FullMovie: React.FC = () => {
                 >
                     Loading...
                 </h1>}
+            {isDisabled &&
+                <div
+                    className={'alert top-16'}
+                >
+                    <div
+                        className={'alert__loading'}
+                    >
+                        <p>Loading...</p>
+                    </div>
+                </div>}
             {movie &&
                 <div
                     className={' top-info'}

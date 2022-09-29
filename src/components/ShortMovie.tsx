@@ -3,7 +3,8 @@ import {IShortMovie} from "../types/MovieTypes";
 import {Link} from "react-router-dom";
 import {useChangeRequestValueMutation, useDeleteFavMovieMutation, useGetRequestValueQuery} from '../store/request.api';
 import whiteHeart from '../assets/icons/whiteHeart.svg';
-import redHeart from '../assets/icons/heart.svg'
+import redHeart from '../assets/icons/heart.svg';
+import '../assets/styles/ShortMovie.scss';
 
 export interface ShortMovieProps extends IShortMovie{
     movieName: string;
@@ -38,8 +39,19 @@ export const ShortMovie: React.FC<ShortMovieProps> = ({Title, Poster, imdbID, mo
 
     return (
         <div
-            className={'flex flex-col gap-4 bg-pink-900 px-3 py-3 text-white rounded-lg items-center justify-between w-[280px]'}
+            className={'flex flex-col gap-4 bg-pink-900 px-3 py-3 text-white rounded-lg items-center justify-between w-[280px] relative'}
         >
+            {isDisabled &&
+                <div
+                    className={'alert'}
+                >
+                    <div
+                        className={'alert__loading'}
+                    >
+                        <p>Loading...</p>
+                    </div>
+                </div>
+            }
             <div
                 className={'flex flex-col gap-4 items-center'}
             >

@@ -1,0 +1,21 @@
+.alert {
+  z-index: 13;
+  position: absolute;
+  display: flex;
+  top: 1rem;
+  .alert__loading {
+    display: flex;
+    padding: .5rem 1rem;
+    align-items: center;
+    justify-content: center;
+    z-index: 14;
+    background: white;
+    border-radius: .25rem;
+    background: lightgoldenrodyellow;
+
+    p {
+      font-size: 1.2rem;
+      color: black;
+    }
+  }
+}
