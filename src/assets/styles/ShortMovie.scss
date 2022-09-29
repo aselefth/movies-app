@@ -26,13 +26,6 @@
 
   .movie__bottom {
     @apply flex items-center gap-4;
-    button {
-      background: $button;
-      height: 45px;
-      padding: .5rem 1rem;
-      text-align: center;
-      border-radius: .25rem;
-    }
   }
 }
 
@@ -47,7 +40,6 @@
     align-items: center;
     justify-content: center;
     z-index: 14;
-    background: white;
     border-radius: .25rem;
     background: lightgoldenrodyellow;
 

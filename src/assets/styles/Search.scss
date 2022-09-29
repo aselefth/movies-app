@@ -1,0 +1,46 @@
+@import './_basics.scss';
+
+.search {
+  z-index: 14;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  .search__top {
+    display: flex;
+    input {
+      padding: .5rem;
+      border-radius: .25rem 0 0 .25rem;
+    }
+    button {
+      background: $button;
+      border-radius: 0 .25rem .25rem 0;
+      width: 50px;
+    }
+  }
+
+  .search__bottom {
+    position: absolute;
+    top: 105%;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    background: white;
+    border-radius: .25rem;
+
+    .search__bottom__item {
+      cursor: pointer;
+      padding: .5rem 1rem;
+
+      & + .search__bottom__item {
+        border-top: 1px solid lightgray;
+      }
+
+      &:hover {
+        background: #90a2a4;
+      }
+    }
+
+
+
+  }
+}

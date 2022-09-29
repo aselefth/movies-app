@@ -1,0 +1,22 @@
+@import './colors.scss';
+
+.container {
+  margin-top: .5rem;
+  width: 100%;
+  min-height: 100%;
+  padding: 0 1rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  background: transparent;
+}
+
+button {
+  background: $button;
+  height: 45px;
+  padding: .5rem 1rem;
+  text-align: center;
+  border-radius: .25rem;
+}

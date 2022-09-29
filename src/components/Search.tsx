@@ -4,6 +4,7 @@ import {useNavigate} from "react-router-dom";
 import {useAppDispatch, useAppSelector} from "../hooks/redux";
 import {addRecentSearch} from "../store/SearchSlice";
 import find from '../assets/icons/magnifyingGlass.svg';
+import '../assets/styles/Search.scss'
 
 export const Search: React.FC = () => {
     const {value, handleValueChange: onSearchChange, setValue} = useInput();
@@ -18,10 +19,10 @@ export const Search: React.FC = () => {
 
     return (
         <div
-            className={'flex flex-col items-center gap-4 pt-4 relative'}
+            className={'search-wrapper'}
         >
             <form
-                className={'relative flex'}
+                className={'search'}
                 onSubmit={(e) => {
                     e.preventDefault();
                     dispatch(addRecentSearch(value));
@@ -29,22 +30,25 @@ export const Search: React.FC = () => {
                     // setValue('')
                 }}
             >
-                <input
-                    value={value}
-                    onChange={onSearchChange}
-                    onBlur={() => setTimeout(() => setIsSearches(false), 100)}
-                    onFocus={() => setIsSearches(true)}
-                    className={'outline-none border p-2 mr-[-1px] rounded'}
-                />
-                <button
-                    type={'submit'}
-                    className={'px-4 py-3 bg-amber-400 rounded w-[50px]'}
+                <div
+                    className={'search__top'}
                 >
-                    <img src={find} alt={'find'} className={'w-full'}/>
-                </button>
+                    <input
+                        value={value}
+                        onChange={onSearchChange}
+                        onBlur={() => setTimeout(() => setIsSearches(false), 100)}
+                        onFocus={() => setIsSearches(true)}
+                        className={'outline-none border p-2 mr-[-1px] rounded'}
+                    />
+                    <button
+                        type={'submit'}
+                    >
+                        <img src={find} alt={'find'} className={'w-full'}/>
+                    </button>
+                </div>
                 {isSearches &&
                     <div
-                        className={'absolute w-full top-[100%] grid grid-cols-1 bg-white z-10 rounded'}
+                        className={' search__bottom'}
                     >
                         {searches.map(searchedMovie =>
                             searchedMovie.toLowerCase().includes(value.toLowerCase()) && value.length > 2 &&
@@ -55,7 +59,7 @@ export const Search: React.FC = () => {
                                     navigate(`/:${searchedMovie}`);
                                     // setValue('')
                                 }}
-                                className={'px-2 py-1 hover:bg-gray-100 w-full h-full border cursor-pointer'}
+                                className={'search__bottom__item'}
                                 key={searchedMovie}
                             >
                                 {searchedMovie}

@@ -11,7 +11,7 @@ const App: React.FC = () => {
 
 
   return (
-    <div className={'relative w-full h-full mt-12'}>
+    <div className={'relative w-full min-h-[100vh] pt-12'}>
       <Navigation />
           <Routes>
             <Route path={'/'} element={<Home />} />
