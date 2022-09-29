@@ -15,7 +15,7 @@ const App: React.FC = () => {
       <Navigation />
           <Routes>
             <Route path={'/'} element={<Home />} />
-              <Route path={'/favourites'} element={<Favourites />} />
+              <Route path={'/favorites'} element={<Favourites />} />
               <Route path={'/:movieName/:id'} element={<FullMovie/>} />
               <Route path={'/:movieName'} element={<SearchMovies/>}/>
           </Routes>

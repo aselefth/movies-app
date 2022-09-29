@@ -8,7 +8,7 @@ export const Navigation: React.FC = () => {
             className={'navigation'}
         >
             <Link to={'/'}>Cinema</Link>
-            <Link to={'/favourites'}>Favourites</Link>
+            <Link to={'/favorites'}>Favorites</Link>
         </nav>
     )
 }
