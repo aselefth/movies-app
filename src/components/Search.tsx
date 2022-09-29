@@ -3,6 +3,7 @@ import {useInput} from "../hooks/useInput";
 import {useNavigate} from "react-router-dom";
 import {useAppDispatch, useAppSelector} from "../hooks/redux";
 import {addRecentSearch} from "../store/SearchSlice";
+import find from '../assets/icons/magnifyingGlass.svg';
 
 export const Search: React.FC = () => {
     const {value, handleValueChange: onSearchChange, setValue} = useInput();
@@ -17,10 +18,10 @@ export const Search: React.FC = () => {
 
     return (
         <div
-            className={'flex flex-col items-center gap-4 mt-4 relative'}
+            className={'flex flex-col items-center gap-4 pt-4 relative'}
         >
             <form
-                className={'relative'}
+                className={'relative flex'}
                 onSubmit={(e) => {
                     e.preventDefault();
                     dispatch(addRecentSearch(value));
@@ -37,9 +38,9 @@ export const Search: React.FC = () => {
                 />
                 <button
                     type={'submit'}
-                    className={'px-4 py-3 bg-amber-400 rounded'}
+                    className={'px-4 py-3 bg-amber-400 rounded w-[50px]'}
                 >
-                    find
+                    <img src={find} alt={'find'} className={'w-full'}/>
                 </button>
                 {isSearches &&
                     <div

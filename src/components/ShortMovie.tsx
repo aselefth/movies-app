@@ -39,7 +39,7 @@ export const ShortMovie: React.FC<ShortMovieProps> = ({Title, Poster, imdbID, mo
 
     return (
         <div
-            className={'flex flex-col gap-4 bg-pink-900 px-3 py-3 text-white rounded-lg items-center justify-between w-[280px] relative'}
+            className={'movie-wrapper'}
         >
             {isDisabled &&
                 <div
@@ -53,36 +53,36 @@ export const ShortMovie: React.FC<ShortMovieProps> = ({Title, Poster, imdbID, mo
                 </div>
             }
             <div
-                className={'flex flex-col gap-4 items-center'}
+                className={'movie__top'}
             >
-                <img
-                    className={'rounded-md w-[16rem] h-[26rem] object-cover'}
-                    src={Poster}
-                />
+                <img src={Poster}/>
                 <p
-                    className={'w-[80%] text-center'}
+                    className={'movie__top__title'}
                 >
                     {Title}
                 </p>
             </div>
-            <div className={'flex items-center gap-4'}>
+            <div className={'movie__bottom'}>
                 <button
                     onClick={() => {
                         toggleFavMovie();
                         setIsDisabled(true);
                     }}
                     disabled={isDisabled}
-                    className={'px-4 py-2 text-center bg-yellow-700 text-white text-xl rounded h-[45px]'}
+                    className={'px-4 py-2 text-center text-white text-xl rounded'}
                 >
                     <div>
                         <img src={isFav ? redHeart : whiteHeart} alt={'favourites'} className={'w-[25px]'}/>
                     </div>
                 </button>
-                <Link to={`/${movieName}/:${imdbID}`}
-                    className={'px-4 py-2 text-center bg-yellow-700 text-white text-xl rounded h-[45px]'}
+                <button
                 >
-                    show more
-                </Link>
+                    <Link to={`/${movieName}/:${imdbID}`}
+                        className={''}
+                    >
+                        show more
+                    </Link>
+                </button>
             </div>
 
         </div>

@@ -5,7 +5,7 @@ const Home: React.FC = () => {
 
     return (
         <div
-            className={'w-full h-full relative'}
+            className={'w-full h-full relative min-h-[90vh]'}
         >
             <Search />
         </div>

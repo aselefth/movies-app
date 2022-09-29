@@ -4,12 +4,12 @@ import {ShortMovie} from "../components/ShortMovie";
 import {IShortMovie} from "../types/MovieTypes";
 
 
-const Favourites: React.FC = () => {
+const Favorites: React.FC = () => {
     const {data} = useGetRequestValueQuery(undefined);
     return (
         <div>
             <div
-                className={'w-full h-full flex gap-14 flex-wrap mx-auto mt-4 px-5 justify-center'}
+                className={'w-full h-full flex gap-14 flex-wrap mx-auto mt-4 px-5 justify-center mb-8'}
             >
                 {data && data.length > 0 ? data.map((movie: IShortMovie) => (
                     <ShortMovie
@@ -26,4 +26,4 @@ const Favourites: React.FC = () => {
     )
 }
 
-export default Favourites;
+export default Favorites;

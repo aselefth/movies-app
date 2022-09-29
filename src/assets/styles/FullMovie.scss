@@ -1,3 +1,5 @@
+@import './colors.scss';
+
 .wrapper {
   position: relative;
   width: 100%;
@@ -6,6 +8,8 @@
   padding: 0 10px;
   margin-top: 8px;
   align-items: center;
+  color: white;
+
   @media screen and (min-width: 1200px) {
     .top-info {
       @apply flex justify-between w-[1200px] mb-8;
@@ -17,6 +21,7 @@
       width: 1200px;
     }
   }
+
   @media screen and (max-width: 500px) {
     margin-bottom: 20px;
     .top-info {

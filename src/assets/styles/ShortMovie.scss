@@ -1,3 +1,41 @@
+@import './colors.scss';
+
+.movie-wrapper {
+  @apply flex flex-col gap-4 px-3 py-3 text-white rounded-lg items-center justify-between relative;
+  width: 280px;
+  background: $short-movie;
+  box-shadow: 0 0 25px rgba(0, 0, 0, .5);
+
+  .movie__top {
+    @apply flex flex-col gap-4 items-center;
+
+    img {
+      @apply rounded-md object-cover;
+      width: 16rem;
+      height: 26rem;
+    }
+
+    .movie__top__title {
+      text-align: center;
+      width: 85%;
+      color: black;
+      font-weight: 600;
+      font-size: 1.25rem;
+    }
+  }
+
+  .movie__bottom {
+    @apply flex items-center gap-4;
+    button {
+      background: $button;
+      height: 45px;
+      padding: .5rem 1rem;
+      text-align: center;
+      border-radius: .25rem;
+    }
+  }
+}
+
 .alert {
   z-index: 13;
   position: absolute;

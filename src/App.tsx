@@ -3,7 +3,7 @@ import React from "react";
 import {Navigation} from "./components/Navigation";
 import {Route, Routes} from "react-router-dom";
 import Home from "./pages/Home";
-import Favourites from "./pages/Favourites";
+import Favorites from "./pages/Favorites";
 import {FullMovie} from "./pages/FullMovie";
 import {SearchMovies} from "./pages/SearchMovies";
 
@@ -11,11 +11,11 @@ const App: React.FC = () => {
 
 
   return (
-    <div className={'relative w-full h-full pt-12'}>
+    <div className={'relative w-full h-full mt-12'}>
       <Navigation />
           <Routes>
             <Route path={'/'} element={<Home />} />
-              <Route path={'/favorites'} element={<Favourites />} />
+              <Route path={'/favorites'} element={<Favorites />} />
               <Route path={'/:movieName/:id'} element={<FullMovie/>} />
               <Route path={'/:movieName'} element={<SearchMovies/>}/>
           </Routes>
