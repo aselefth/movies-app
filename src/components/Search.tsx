@@ -11,7 +11,7 @@ export const Search: React.FC = () => {
     const searches = useAppSelector(state => state.search.previousRequests);
     const navigate = useNavigate();
     useEffect(() => {
-        setValue('')
+         setValue('')
     }, []);
 
 
@@ -20,6 +20,7 @@ export const Search: React.FC = () => {
             className={'flex flex-col items-center gap-4 mt-4 relative'}
         >
             <form
+                className={'relative'}
                 onSubmit={(e) => {
                     e.preventDefault();
                     dispatch(addRecentSearch(value));
@@ -40,28 +41,28 @@ export const Search: React.FC = () => {
                 >
                     find
                 </button>
-            </form>
-
-            {isSearches &&
-                <div
-                    className={'absolute w-full top-[100%] grid grid-cols-1 bg-white z-10 rounded'}
-                >
-                    {searches.map(searchedMovie =>
+                {isSearches &&
+                    <div
+                        className={'absolute w-full top-[100%] grid grid-cols-1 bg-white z-10 rounded'}
+                    >
+                        {searches.map(searchedMovie =>
                             searchedMovie.toLowerCase().includes(value.toLowerCase()) && value.length > 2 &&
-                                <p
-                                    onClick={() => {
-                                        navigate(`/:${searchedMovie}`);
-                                        // setValue('')
-                                    }}
-                                    className={'px-2 py-1 hover:bg-gray-100 w-full h-full border cursor-pointer'}
-                                    key={searchedMovie}
-                                >
-                                    {searchedMovie}
-                                </p>
+                            <p
+                                onClick={() => {
+                                    console.log(value)
+                                    setValue(searchedMovie)
+                                    navigate(`/:${searchedMovie}`);
+                                    // setValue('')
+                                }}
+                                className={'px-2 py-1 hover:bg-gray-100 w-full h-full border cursor-pointer'}
+                                key={searchedMovie}
+                            >
+                                {searchedMovie}
+                            </p>
 
-                    )}
-                </div>}
-
+                        )}
+                    </div>}
+            </form>
         </div>
     )
 }

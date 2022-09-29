@@ -1,27 +1,18 @@
-import React, {useEffect, useRef, useState} from "react";
+import React, {useEffect, useState} from "react";
 import {ShortMovie, ShortMovieProps} from "../components/ShortMovie";
 import {useGetMoviesBySearchQuery} from "../store/fake.api";
 import {Link, useParams} from "react-router-dom";
 import {Pagination} from "../components/Pagination";
 import {Search} from "../components/Search";
+import {usePagination} from "../hooks/usePagination";
 
 export const SearchMovies: React.FC = () => {
     const [page, setPage] = useState(1);
     const {movieName} = useParams();
     const {data, isLoading} = useGetMoviesBySearchQuery(`s=${movieName}&page=${page}`);
     const response = data !== undefined && data.Response === 'True';
-    const ref = useRef<HTMLDivElement>(null);
+    const {handlePreviousPage, handleNextPage, ref} = usePagination(data?.totalResults, page, setPage);
 
-    const handlePreviousPage = () => {
-        if (page < 2) return;
-        setPage(prev => prev - 1);
-        ref.current && ref.current.scrollIntoView({behavior: 'smooth', block: 'start'});
-    }
-    const handleNextPage = () => {
-        if (Math.ceil(data?.totalResults / 10) === page ) return;
-        setPage(prev => prev + 1);
-        ref.current && ref.current.scrollIntoView({behavior: 'smooth', block: 'start'});
-    }
 
     useEffect(() => {
         setPage(1);
