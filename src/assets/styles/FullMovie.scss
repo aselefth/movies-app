@@ -1,4 +1,4 @@
-@import './colors.scss';
+@import './_basics.scss';
 
 .wrapper {
   position: relative;
@@ -15,10 +15,18 @@
       @apply flex justify-between w-[1200px] mb-8;
       .top-info__right {
         @apply flex flex-col gap-2;
+
+        button {
+          width: 60px;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+        }
       }
     }
     .movie-plot {
       width: 1200px;
+      text-indent: 2rem;
     }
   }
 
@@ -29,12 +37,20 @@
       .top-info__right {
         display: flex;
         flex-direction: column;
+
+        button {
+          width: 60px;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+        }
       }
 
       margin-bottom: 50px;
     }
     .movie-plot {
       display: flex;
+      text-indent: 2rem;
     }
   }
 }

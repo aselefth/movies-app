@@ -10,16 +10,17 @@ import whiteHeart from "../assets/icons/whiteHeart.svg";
 
 export const FullMovie: React.FC = () => {
     const {id} = useParams();
-    const {data: movie, isLoading} = useGetMovieByIdQuery(`${id?.slice(1, id?.length)}`);
+    const ID = `${id?.slice(1, id?.length)}`;
+    const {data: movie, isLoading} = useGetMovieByIdQuery(ID);
     const [addToFavs] = useChangeRequestValueMutation();
     const [isDisabled, setIsDisabled] = useState(false);
     const [removeFromFavs] = useDeleteFavMovieMutation();
     const {data} = useGetRequestValueQuery(undefined);
     const [isFav, setIsFav] = useState(false);
-    const searchedMovie = data && data.find((item: IShortMovie) => item.imdbID === `${id?.slice(1, id?.length)}`);
+    const searchedMovie = data && data.find((item: IShortMovie) => item.imdbID === ID);
     const toggleFavMovie = async() => {
         if (searchedMovie === undefined) {
-            movie && await addToFavs({Title: movie.Title, Poster: movie.Poster, imdbID: `${id}`, id: ''});
+            movie && await addToFavs({Title: movie.Title, Poster: movie.Poster, imdbID: ID, id: ''});
             setIsFav(true);
         } else {
             await removeFromFavs(searchedMovie.id);
@@ -106,7 +107,6 @@ export const FullMovie: React.FC = () => {
                             setIsDisabled(true);
                         }}
                         disabled={isDisabled}
-                        className={'px-4 py-2 text-center bg-yellow-700 text-white text-xl rounded h-[45px] w-[70px] flex justify-center items-center'}
                     >
                         <div>
                             <img src={isFav ? redHeart : whiteHeart} alt={'favourites'} className={'w-[25px]'}/>
